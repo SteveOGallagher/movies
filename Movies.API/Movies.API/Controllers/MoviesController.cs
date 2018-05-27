@@ -20,9 +20,22 @@ namespace Movies.API.Controllers
         
         // GET api/movies
         [HttpGet]
-        public IActionResult Get()
+        public IActionResult Get(string title = "")
         {
 			var movies = MathHelpers.RoundRatings(Movies); // TODO: fetch from DB instead of memory object
+
+            
+			if (title != "")
+            {
+                var filteredMovies = movies.Where(x => x.Title == title).SingleOrDefault();
+                
+                if (filteredMovies != null)
+                {
+                    return Ok(filteredMovies);
+                }
+                
+				return NotFound();
+            }
             
             var jsonResponse = JsonConvert.SerializeObject(movies);
             
