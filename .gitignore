@@ -79,6 +79,7 @@ _[Ss]cripts
 # VS files #
 ############
 Movies.API/Movies.API.userprefs
+Movies.API/.vs/Movies.API/xs/UserPrefs.xml
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json

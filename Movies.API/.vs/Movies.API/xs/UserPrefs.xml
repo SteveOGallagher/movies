@@ -1,7 +1,9 @@
 ﻿<Properties StartupConfiguration="{09BB91CF-11F9-4FF5-987F-CFCE599D641D}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Movies.API/Controllers/ValuesController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Movies.DB/Models/Movie.cs">
     <Files>
-      <File FileName="Movies.API/Controllers/ValuesController.cs" Line="10" Column="47" />
+      <File FileName="Movies.API/Controllers/MoviesController.cs" Line="28" Column="49" />
+      <File FileName="Movies.DB/Class1.cs" Line="1" Column="1" />
+      <File FileName="Movies.DB/Models/Movie.cs" Line="11" Column="23" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.ItemProperties.Movies.API PreferredExecutionTarget="MonoDevelop.Default" FirstBuild="True" />
@@ -12,5 +14,6 @@
   <MonoDevelop.Ide.DebuggingService.PinnedWatches>
     <Watch file="../../../../../286lk026-emailer/.vs/Emailer/xs/Emailer.AWS/StateMachine.cs" line="429" offsetX="508" offsetY="6420" expression="emailExecutionArn" liveUpdate="False" />
   </MonoDevelop.Ide.DebuggingService.PinnedWatches>
+  <MonoDevelop.Ide.ItemProperties.Movies.DB FirstBuild="True" />
   <MultiItemStartupConfigurations />
 </Properties>
