@@ -23,7 +23,7 @@ namespace Movies.API.ResponseModels
         public MoviesDetails (Movie movie)
         {
 			ID = movie.ID;
-			Rating = movie.Rating;
+			AverageRating = movie.AverageRating;
 			RunningTime = movie.RunningTime;
 			Title = movie.Title;
 			YearOfRelease = movie.YearOfRelease;
@@ -31,7 +31,7 @@ namespace Movies.API.ResponseModels
         
         public int ID { get; set; }
 
-        public double Rating { get; set; }
+        public double AverageRating { get; set; }
 
         public string RunningTime { get; set; }
 

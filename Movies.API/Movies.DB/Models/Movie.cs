@@ -10,7 +10,7 @@
 
         public string[] Genres { get; set; }
 
-		public double Rating { get; set; }
+		public double AverageRating { get; set; }
 
         public string RunningTime { get; set; }
 

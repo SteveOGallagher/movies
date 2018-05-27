@@ -10,8 +10,8 @@ namespace Movies.API.Helpers
         {
 			for (var movie = 0; movie < movies.Count; movie++)
             {
-				var rating = movies[movie].Rating;
-				movies[movie].Rating = Math.Round((rating * 2), MidpointRounding.AwayFromZero)/2;
+				var rating = movies[movie].AverageRating;
+				movies[movie].AverageRating = Math.Round((rating * 2), MidpointRounding.AwayFromZero)/2;
             }
 
 			return movies;

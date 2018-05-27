@@ -28,7 +28,7 @@ namespace Movies.API.Helpers
             {
                 var userRatings = CreateRatings(users);
 				
-				movies.Add(new Movie { ID = id, Title = movie.Title, Genres = movie.Genres, YearOfRelease = movie.YearOfRelease, UserRatings = userRatings, Rating = AverageRating(userRatings), RunningTime = movie.RunningTime });
+				movies.Add(new Movie { ID = id, Title = movie.Title, Genres = movie.Genres, YearOfRelease = movie.YearOfRelease, UserRatings = userRatings, AverageRating = AverageRating(userRatings), RunningTime = movie.RunningTime });
 				id++;
             }
 

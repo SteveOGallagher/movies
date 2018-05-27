@@ -61,11 +61,13 @@ namespace Movies.API.Controllers
 			return NotFound();
         }
 
-        // GET api/movies/5
-        [HttpGet("{id}")]
-        public IActionResult Get(int id)
+        // GET api/movies/toprated
+        [HttpGet("toprated")]
+        public IActionResult Get()
         {
-            return Ok("value");
+			var movies = Movies.OrderByDescending(a => a.AverageRating).ThenBy(t => t.Title);
+            
+            return Ok(movies.Take(5));
         }
 
         // PUT api/movies/5/userrating/3
