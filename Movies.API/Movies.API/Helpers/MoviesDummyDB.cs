@@ -9,7 +9,7 @@ namespace Movies.API.Helpers
     {
         public static List<Movie> GenerateMoviesData()
         {
-			var users = CreateUsers();
+			var users = UsersDummyData.CreateUsers();
 			var movieTitles = new List<Movie>
 			{
 				new Movie { Title = "Armagheddon", YearOfRelease = "1994", Genres = new string[] { "sci-fi", "thriller" }, RunningTime = "100"},
@@ -52,22 +52,6 @@ namespace Movies.API.Helpers
             }
 
 			return movies;
-        }
-    
-        static List<User> CreateUsers()
-        {
-            return new List<User>
-            {
-                new User { ID = 1, UserName = "DaveGrohl" },
-                
-                new User { ID = 2, UserName = "RiversCuomo" },
-                
-                new User { ID = 3, UserName = "MikeDirnt" },
-                
-                new User { ID = 4, UserName = "TomMorello" },
-                
-                new User { ID = 5, UserName = "CarsonWentz" } 
-            };
         }
     
         static List<UserRating> CreateRatings(List<User> users)

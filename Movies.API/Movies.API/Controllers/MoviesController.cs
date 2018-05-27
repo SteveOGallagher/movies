@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Movies.API.Helpers;
 using Movies.API.Models;
 using Movies.API.ResponseModels;
+using Movies.DB.Models;
 using Newtonsoft.Json;
 
 namespace Movies.API.Controllers
@@ -17,7 +18,8 @@ namespace Movies.API.Controllers
 	[Route("api/[controller]")]
 	public class MoviesController : ControllerBase
 	{
-		static List<Movie> Movies = MoviesDummyDB.GenerateMoviesData();
+        static List<Movie> Movies = MoviesDummyDB.GenerateMoviesData();
+        static List<User> Users = UsersDummyData.CreateUsers();
         
         // GET api/movies
         [HttpGet]
@@ -65,18 +67,38 @@ namespace Movies.API.Controllers
         [HttpGet("toprated")]
         public IActionResult Get()
         {
-            var movies = Movies.OrderByDescending(a => a.AverageRating).ThenBy(t => t.Title);
+            var movies = Movies.OrderByDescending(a => a.AverageRating).ThenBy(t => t.Title).Take(5);
             
-            return Ok(movies.Take(5));
+            if (movies != null)
+            {
+                var moviesResponse = MoviesResponse.CreateResponse(movies);
+                
+				return Ok(moviesResponse);
+            }
+            
+            return NotFound();
         }
 
         // GET api/movies/toprated/3
         [HttpGet("toprated/{userId}")]
         public IActionResult Get(int userId)
         {
-            var movies = Movies.OrderByDescending(a => a.UserRatings.Where(u => u.User.ID == userId).SingleOrDefault().Rating).ThenBy(t => t.Title);
+			var user = Users.Where(i => i.ID == userId).SingleOrDefault();
+            if (user == null)
+            {
+				return NotFound("No user has been found for this id");
+            }
             
-            return Ok(movies.Take(5));
+            var movies = Movies.OrderByDescending(a => a.UserRatings.Where(u => u.User.ID == userId).SingleOrDefault().Rating).ThenBy(t => t.Title).Take(5);
+            
+            if (movies != null)
+            {
+                var moviesResponse = MoviesResponse.CreateResponse(movies);
+                
+                return Ok(moviesResponse);
+            }
+            
+            return NotFound("No matching movie ratings were able to be found for this user");
         }
 
         // PUT api/movies/5/userrating/3
