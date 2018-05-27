@@ -22,7 +22,8 @@ namespace Movies.API.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-			var movies = Movies; // TODO: fetch from DB instead of memory object
+			var movies = MathHelpers.RoundRatings(Movies); // TODO: fetch from DB instead of memory object
+            
             var jsonResponse = JsonConvert.SerializeObject(movies);
             
 			return Ok(jsonResponse);
