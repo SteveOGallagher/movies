@@ -7,6 +7,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Movies.API.Helpers;
 using Movies.API.Models;
 using Newtonsoft.Json;
 
@@ -15,11 +16,7 @@ namespace Movies.API.Controllers
 	[Route("api/[controller]")]
 	public class MoviesController : ControllerBase
 	{
-		static List<Movie> Movies = new List<Movie>
-        {
-            new Movie {ID = 2, Title = "Anchorman 2"},
-            new Movie {ID = 1, Title = "Armagheddon"}
-        };
+		static List<Movie> Movies = MoviesDummyDB.GenerateMoviesData();
         
         // GET api/movies
         [HttpGet]
