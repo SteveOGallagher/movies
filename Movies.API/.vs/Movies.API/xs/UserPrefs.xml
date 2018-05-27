@@ -1,0 +1,16 @@
+﻿<Properties StartupConfiguration="{09BB91CF-11F9-4FF5-987F-CFCE599D641D}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Movies.API/Controllers/ValuesController.cs">
+    <Files>
+      <File FileName="Movies.API/Controllers/ValuesController.cs" Line="10" Column="47" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.Movies.API PreferredExecutionTarget="MonoDevelop.Default" FirstBuild="True" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches>
+    <Watch file="../../../../../286lk026-emailer/.vs/Emailer/xs/Emailer.AWS/StateMachine.cs" line="429" offsetX="508" offsetY="6420" expression="emailExecutionArn" liveUpdate="False" />
+  </MonoDevelop.Ide.DebuggingService.PinnedWatches>
+  <MultiItemStartupConfigurations />
+</Properties>
