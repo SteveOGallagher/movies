@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Movies.API.Helpers;
 using Movies.API.Models;
+using Movies.API.ResponseModels;
 using Newtonsoft.Json;
 
 namespace Movies.API.Controllers
@@ -52,7 +53,9 @@ namespace Movies.API.Controllers
             
             if (filteredMovies != null)
             {
-                return Ok(filteredMovies);
+				var moviesResponse = MoviesResponse.CreateResponse(filteredMovies);
+                
+                return Ok(moviesResponse);
             }
             
 			return NotFound();
