@@ -20,26 +20,42 @@ namespace Movies.API.Controllers
         
         // GET api/movies
         [HttpGet]
-        public IActionResult Get(string title = "")
+        public IActionResult Get(string title = null, string yearOfRelease = null, string[] genres = null)
         {
 			var movies = MathHelpers.RoundRatings(Movies); // TODO: fetch from DB instead of memory object
 
+			if (title == null && yearOfRelease == null && genres.Length == 0)
+			{
+				return BadRequest("You must submit at least 1 search critera");
+			}
+
+			IEnumerable<Movie> filteredMovies = null;
             
-			if (title != "")
+            if (title != null)
             {
-                var filteredMovies = movies.Where(x => x.Title == title).SingleOrDefault();
-                
-                if (filteredMovies != null)
-                {
-                    return Ok(filteredMovies);
-                }
-                
-				return NotFound();
+                filteredMovies = movies.Where(x => x.Title == title);
             }
             
-            var jsonResponse = JsonConvert.SerializeObject(movies);
+            if (yearOfRelease != null)
+            {
+                filteredMovies = filteredMovies == null ?
+                                    movies.Where(x => x.YearOfRelease == yearOfRelease): 
+                                    filteredMovies.Where(x => x.YearOfRelease == yearOfRelease);
+            }
             
-			return Ok(jsonResponse);
+            if (genres.Length > 0)
+            {
+                filteredMovies = filteredMovies == null ?
+                                    movies.Where(x => !genres.Except(x.Genres).Any()): 
+                                    filteredMovies.Where(x => !genres.Except(x.Genres).Any());
+            }
+            
+            if (filteredMovies != null)
+            {
+                return Ok(filteredMovies);
+            }
+            
+			return NotFound();
         }
 
         // GET api/movies/5

@@ -8,10 +8,14 @@
 	{
 		public int ID { get; set; }
 
-		public string Title { get; set; }
+        public string[] Genres { get; set; }
 
 		public double Rating { get; set; }
 
+        public string Title { get; set; }
+
 		public List<UserRating> UserRatings { get; set; }
+
+        public string YearOfRelease { get; set; }
     }
 }
