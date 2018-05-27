@@ -65,7 +65,16 @@ namespace Movies.API.Controllers
         [HttpGet("toprated")]
         public IActionResult Get()
         {
-			var movies = Movies.OrderByDescending(a => a.AverageRating).ThenBy(t => t.Title);
+            var movies = Movies.OrderByDescending(a => a.AverageRating).ThenBy(t => t.Title);
+            
+            return Ok(movies.Take(5));
+        }
+
+        // GET api/movies/toprated/3
+        [HttpGet("toprated/{userId}")]
+        public IActionResult Get(int userId)
+        {
+            var movies = Movies.OrderByDescending(a => a.UserRatings.Where(u => u.User.ID == userId).SingleOrDefault().Rating).ThenBy(t => t.Title);
             
             return Ok(movies.Take(5));
         }
