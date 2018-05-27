@@ -44,14 +44,17 @@ namespace Movies.API.Helpers
         static List<UserRating> CreateRatings(List<User> users)
         {
 			var userRatings = new List<UserRating>();
+			var id = 1;
             
             foreach(var user in users)
             {
 				userRatings.Add(new UserRating
 				{
-					User = users[0],
+                    ID = id,
+					User = user,
 					Rating = new Random().Next(0, 5)
 				});
+				id++;
             }
 
 			return userRatings;
