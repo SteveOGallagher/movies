@@ -12,13 +12,13 @@ namespace Movies.API.Helpers
 			var users = CreateUsers();
 			var movieTitles = new List<Movie>
 			{
-				new Movie { Title = "Armagheddon", YearOfRelease = "1994", Genres = new string[] { "sci-fi", "thriller" }},
-				new Movie { Title = "Anchorman 2", YearOfRelease = "2016", Genres = new string[] { "comedy" }},
-				new Movie { Title = "Edge Of Tomorrow", YearOfRelease = "2015", Genres = new string[] { "sci-fi", "thriller" }},
-				new Movie { Title = "Guardians of the Galaxy", YearOfRelease = "2015", Genres = new string[] { "sci-fi", "superhero" }},
-				new Movie { Title = "The Matrix", YearOfRelease = "1999", Genres = new string[] { "sci-fi", "thriller" }},
-				new Movie { Title = "Shaun of the Dead", YearOfRelease = "2004", Genres = new string[] { "comedy", "thriller", "horror" }},
-				new Movie { Title = "Citizen Kane", YearOfRelease = "1970", Genres = new string[] { "drama" }}
+				new Movie { Title = "Armagheddon", YearOfRelease = "1994", Genres = new string[] { "sci-fi", "thriller" }, RunningTime = "100"},
+				new Movie { Title = "Anchorman 2", YearOfRelease = "2016", Genres = new string[] { "comedy" }, RunningTime = "90"},
+				new Movie { Title = "Edge Of Tomorrow", YearOfRelease = "2015", Genres = new string[] { "sci-fi", "thriller" }, RunningTime = "110"},
+				new Movie { Title = "Guardians of the Galaxy", YearOfRelease = "2015", Genres = new string[] { "sci-fi", "superhero" }, RunningTime = "110"},
+				new Movie { Title = "The Matrix", YearOfRelease = "1999", Genres = new string[] { "sci-fi", "thriller" }, RunningTime = "120"},
+				new Movie { Title = "Shaun of the Dead", YearOfRelease = "2004", Genres = new string[] { "comedy", "thriller", "horror" }, RunningTime = "89"},
+				new Movie { Title = "Citizen Kane", YearOfRelease = "1970", Genres = new string[] { "drama" }, RunningTime = "160"}
 			};
             
 			var movies = new List<Movie>();
@@ -28,7 +28,7 @@ namespace Movies.API.Helpers
             {
                 var userRatings = CreateRatings(users);
 				
-				movies.Add(new Movie { ID = id, Title = movie.Title, Genres = movie.Genres, YearOfRelease = movie.YearOfRelease, UserRatings = userRatings, Rating = AverageRating(userRatings) });
+				movies.Add(new Movie { ID = id, Title = movie.Title, Genres = movie.Genres, YearOfRelease = movie.YearOfRelease, UserRatings = userRatings, Rating = AverageRating(userRatings), RunningTime = movie.RunningTime });
 				id++;
             }
 
