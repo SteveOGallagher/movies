@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -11,14 +12,14 @@ using Newtonsoft.Json;
 
 namespace Movies.API.Controllers
 {
-    [Route("api/[controller]")]
-    public class MoviesController : ControllerBase
-    {
-		List<Movie> Movies = new List<Movie>
-		{
+	[Route("api/[controller]")]
+	public class MoviesController : ControllerBase
+	{
+		static List<Movie> Movies = new List<Movie>
+        {
             new Movie {ID = 2, Title = "Anchorman 2"},
             new Movie {ID = 1, Title = "Armagheddon"}
-		};
+        };
         
         // GET api/movies
         [HttpGet]
@@ -34,13 +35,16 @@ namespace Movies.API.Controllers
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            return "value";
+            return Ok("value");
         }
 
         // PUT api/movies/5
         [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromBody]string value)
+        public IActionResult Put(int id)
         {
+			Movies[0].Title = "updated";
+
+			return Ok(Movies);
         }
     }
 }
