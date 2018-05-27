@@ -24,6 +24,25 @@ namespace Movies.API.Helpers
 
 			return movies;
         }
+        
+        public static List<Movie> UpdateMovieRating(List<Movie> movies, int movieId, int userId, double rating)
+        {
+			for (var movieIndex = 0; movieIndex < movies.Count; movieIndex++)
+            {
+                if (movies[movieIndex].ID == movieId)
+                {
+					for (var ratingIndex = 0; ratingIndex < movies[movieIndex].UserRatings.Count; ratingIndex++)
+                    {
+                        if (movies[movieIndex].UserRatings[ratingIndex].User.ID == userId)
+                        {
+							movies[movieIndex].UserRatings[ratingIndex].Rating = rating;
+                        }
+                    }
+                }
+            }
+
+			return movies;
+        }
     
         static List<User> CreateUsers()
         {

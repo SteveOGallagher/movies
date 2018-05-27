@@ -34,7 +34,7 @@ namespace Movies.API
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseMvc();
+            app.UseMvcWithDefaultRoute();
         }
     }
 }

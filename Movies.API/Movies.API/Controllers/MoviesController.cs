@@ -36,13 +36,41 @@ namespace Movies.API.Controllers
             return Ok("value");
         }
 
-        // PUT api/movies/5
-        [HttpPut("{id}")]
-        public IActionResult Put(int id)
+        // PUT api/movies/5/userrating/3
+        [HttpPut("{movieId}/userrating/{userId}/{newRating}")]
+        public IActionResult Put(int movieId, int userId, string newRating)
         {
-			Movies[0].Title = "updated";
+			try
+            {
+				Convert.ToDouble(newRating);
+            }
+            catch (FormatException)
+            {
+				return BadRequest("The submitted rating is not submitted in a valid format.");
+            }
+            
+            if (Convert.ToDouble(newRating) < 0 || Convert.ToDouble(newRating) > 5)
+            {
+                return BadRequest("The submitted rating is not between 0 and 5.");
+            }
+            
+			var movie = Movies.Where(x => x.ID == movieId).SingleOrDefault();
+            
+            if (movie != null)
+            {
+				var rating = movie.UserRatings.Where(x => x.User.ID == userId).SingleOrDefault();
+                
+                if (rating != null)
+                {
+					Movies = MoviesDummyDB.UpdateMovieRating(Movies, movieId, userId, Convert.ToDouble(newRating));
 
-			return Ok(Movies);
+					return Ok(Movies);
+                }
+
+				return NotFound("No user has been found for that id.");
+            }
+
+            return NotFound("No movie has been found for that id.");
         }
     }
 }
