@@ -18,14 +18,21 @@ namespace Movies.API.Controllers
 	[Route("api/[controller]")]
 	public class MoviesController : ControllerBase
 	{
-        static List<Movie> Movies = MoviesDummyDB.GenerateMoviesData();
-        static List<User> Users = UsersDummyData.CreateUsers();
+        static List<Movie> Movies = MoviesDummyDB.GenerateMoviesData(); // TODO: fetch from DB instead of memory object
+        static List<User> Users = UsersDummyData.CreateUsers(); // TODO: fetch from DB instead of memory object
         
-        // GET api/movies
+        /// GET api/movies
+        /// <summary>
+        /// Get the movies acccording to specified title, yearOfRelease and genres.
+        /// </summary>
+        /// <returns>The filtered movies.</returns>
+        /// <param name="title">Title.</param>
+        /// <param name="yearOfRelease">Year of release.</param>
+        /// <param name="genres">Genres.</param>
         [HttpGet]
         public IActionResult Get(string title = null, string yearOfRelease = null, string[] genres = null)
         {
-			var movies = MathHelpers.RoundRatings(Movies); // TODO: fetch from DB instead of memory object
+			var movies = MathHelpers.RoundRatings(Movies);
 
 			if (title == null && yearOfRelease == null && genres.Length == 0)
 			{
@@ -63,7 +70,11 @@ namespace Movies.API.Controllers
 			return NotFound();
         }
 
-        // GET api/movies/toprated
+        /// GET api/movies/toprated
+        /// <summary>
+        /// Get the top 5 movies according to all user ratings.
+        /// </summary>
+        /// <returns>The top 5 rated movies</returns>
         [HttpGet("toprated")]
         public IActionResult Get()
         {
@@ -79,7 +90,12 @@ namespace Movies.API.Controllers
             return NotFound();
         }
 
-        // GET api/movies/toprated/3
+        /// GET api/movies/toprated/3
+        /// <summary>
+        /// Get the top 5 movies according to specified user by Id.
+        /// </summary>
+        /// <returns>The user's top 5 rated movies</returns>
+        /// <param name="userId">User identifier.</param>
         [HttpGet("toprated/{userId}")]
         public IActionResult Get(int userId)
         {
@@ -101,7 +117,14 @@ namespace Movies.API.Controllers
             return NotFound("No matching movie ratings were able to be found for this user");
         }
 
-        // PUT api/movies/5/userrating/3
+        /// <summary>
+        /// Update the specified user's rating for a specified movie.
+        /// </summary>
+        /// <returns>The put.</returns>
+        /// <param name="movieId">Movie identifier.</param>
+        /// <param name="userId">User identifier.</param>
+        /// <param name="newRating">New rating.</param>
+        /// PUT api/movies/5/userrating/3
         [HttpPut("{movieId}/userrating/{userId}/{newRating}")]
         public IActionResult Put(int movieId, int userId, string newRating)
         {

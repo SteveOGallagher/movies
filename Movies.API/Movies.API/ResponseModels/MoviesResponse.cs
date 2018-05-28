@@ -6,6 +6,11 @@ namespace Movies.API.ResponseModels
 {
     public class MoviesResponse 
     {
+        /// <summary>
+        /// Creates the reduced Movies response using MoviesDetails instead of Movie class.
+        /// </summary>
+        /// <returns>The response.</returns>
+        /// <param name="movies">Movies.</param>
         public static List<MoviesDetails> CreateResponse(IEnumerable<Movie> movies)
         {
 			var moviesResponse = new List<MoviesDetails>();
@@ -18,6 +23,7 @@ namespace Movies.API.ResponseModels
 			return moviesResponse;
         }
     }
+    
     public class MoviesDetails
     {
         public MoviesDetails (Movie movie)

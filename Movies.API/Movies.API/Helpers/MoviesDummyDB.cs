@@ -12,7 +12,7 @@ namespace Movies.API.Helpers
 			var users = UsersDummyData.CreateUsers();
 			var movieTitles = new List<Movie>
 			{
-				new Movie { Title = "Armagheddon", YearOfRelease = "1994", Genres = new string[] { "sci-fi", "thriller" }, RunningTime = "100"},
+				new Movie { Title = "Armageddon", YearOfRelease = "1994", Genres = new string[] { "sci-fi", "thriller" }, RunningTime = "100"},
 				new Movie { Title = "Anchorman 2", YearOfRelease = "2016", Genres = new string[] { "comedy" }, RunningTime = "90"},
 				new Movie { Title = "Edge Of Tomorrow", YearOfRelease = "2015", Genres = new string[] { "sci-fi", "thriller" }, RunningTime = "110"},
 				new Movie { Title = "Guardians of the Galaxy", YearOfRelease = "2015", Genres = new string[] { "sci-fi", "superhero" }, RunningTime = "110"},
