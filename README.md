@@ -60,4 +60,4 @@ Currently there is no DI within the project which makes future maintainability p
 
 ##### Movie Filtering
 
-Currently the search for movies by title requires an exact title match to filter movies correctly. Ideally, the API should be able to filter according to movie titles which contain part of the submitted title text. Also, even more ideally, the API could make use of some AI by using Azure Cognitive Services for example so that if a genre of 'thrills' was submitted, the tag of 'thriller' could be matched for this and all thriller films could be returned to the request rather than 0 results.
+The API could improved to make use of some AI by using Azure Cognitive Services for example so that if a genre of 'thrills' was submitted, the tag of 'thriller' could be matched for this and all thriller films could be returned to the request rather than 0 results.

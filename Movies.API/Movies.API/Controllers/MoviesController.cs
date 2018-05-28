@@ -43,7 +43,7 @@ namespace Movies.API.Controllers
             
             if (title != null)
             {
-                filteredMovies = movies.Where(x => x.Title == title);
+                filteredMovies = movies.Where(x => x.Title.ToLower().Contains(title.ToLower()));
             }
             
             if (yearOfRelease != null)
