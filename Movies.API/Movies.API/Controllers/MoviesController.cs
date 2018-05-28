@@ -123,13 +123,19 @@ namespace Movies.API.Controllers
             
             if (movie != null)
             {
-				var rating = movie.UserRatings.Where(x => x.User.ID == userId).SingleOrDefault();
-                
-                if (rating != null)
+                var user = Users.Where(i => i.ID == userId).SingleOrDefault();
+                if (user != null)
                 {
-					Movies = MoviesDummyDB.UpdateMovieRating(Movies, movieId, userId, Convert.ToDouble(newRating));
+                    var rating = movie.UserRatings.Where(x => x.User.ID == userId).SingleOrDefault();
+                    
+                    if (rating != null)
+                    {
+                        Movies = MoviesDummyDB.UpdateMovieRating(Movies, movieId, userId, Convert.ToDouble(newRating));
+    
+                        return Ok(Movies);
+                    }
 
-					return Ok(Movies);
+                    return NotFound("No rating has been given on that movie for that user id.");
                 }
 
 				return NotFound("No user has been found for that id.");
