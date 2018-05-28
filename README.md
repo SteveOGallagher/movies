@@ -34,7 +34,7 @@ The following endpoints are available:
   - `api/movies?yearOfRelease=2015` : The _yearOfRelease_ paramater will filter the movies to ones matching the submitted year of release exactly. This example query will return the films which were released in 2015. _( Note: the years in this example project are not fact-checked, they are guessed at by the developer, probably poorly...)_
   -  `api/movies?genres=thriller&genres=sci-fi` : The _genres_ paramater will filter the movies to ones tagged with all of the submitted genres. This example query will return any films which are both thriller and sci-fi genres.
   - It is possible to submit multiple query parameters at once; the API will return any movies that match all of the criteria submitted.
- - `PUT api/movies/{movieId}/userrating/{userId}` : This endpoint updates a user's rating of a movie according to the movie's API Id and the user's API Id. The rating must be passed in the body of the request in the format: ``` {   "newRating": "4" }```. The number must be a valid double value when converted from a string and must be between 0 and 5.
+ - `PUT api/movies/{movieId}/userrating/{userId}/{newRating}` : This endpoint updates a user's rating of a movie according to the movie's API Id and the user's API Id. The `newRating` must be a valid double value when converted from a string and must be between 0 and 5.
  - `GET api/movies/toprated` : This endpoint will return the top 5 rated movies as an average of all user ratings.
  - `GET api/movies/toprated/{userId}` : This endpoint will return the top 5 rated movies according to a particular user identified by their API Id.
 
