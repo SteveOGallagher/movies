@@ -54,6 +54,10 @@ The API endpoints contain all of their LINQ processing data currently for the sa
 
 Currently each Movie in the _Movies_ dummy data contains a list of UserRatings within itself which have been applied to that movie. If an actual database were being used for this API, the UserRatings ought to have its own database table with Id keys to link them to their associated Movie and User. This would make it easier to get all UserRatings matching a particular movie as well as all UserRatings matching a particular user, without the latter requiring a filtering process through all Movies to check all UserRatings on them for matching user Ids as is currently in place.
 
+##### PUT endpoint
+
+The PUT endpoint currently only updates a pre-existing rating for a user. This could be refactoring to also allow the adding of a rating by a user for the first time.
+
 ##### Dependancy Injection
 
 Currently there is no DI within the project which makes future maintainability problematic. Classes in the code are currently new'd up each time an instance of it is required; whereas, ideally each class would have a corresponding interface to code against so that any future alterations to the classes themselves shouldn't require refactoring wherever that class is new'd throughout the codebase.
